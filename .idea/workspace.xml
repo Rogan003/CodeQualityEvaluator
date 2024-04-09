@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ff2088e0-049e-4dbc-964f-50ed37aa6469" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codecomponents/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codecomponents/Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codecomponents/CodeComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codecomponents/CodeComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codecomponents/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codecomponents/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codecomponents/ConditionalStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codecomponents/ConditionalStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codecomponents/Loop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codecomponents/Loop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codecomponents/Method.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codecomponents/Method.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codecomponents/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codecomponents/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codeparser/CodeParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeparser/CodeParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componentcomplexityevaluator/ComponentComplexityEvaluator.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +26,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -76,7 +85,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712667132687</updated>
       <workItem from="1712667134089" duration="2691000" />
-      <workItem from="1712669850173" duration="581000" />
+      <workItem from="1712669850173" duration="4638000" />
     </task>
     <servers />
   </component>
