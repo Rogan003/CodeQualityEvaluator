@@ -2,6 +2,7 @@ package codeparser;
 
 import codecomponents.CodeComponent;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +20,28 @@ public class CodeParser {
         }
     }
 
+    // Adds all the java file paths from the given directoryPath
+    // uses recursive calls to get all the files inside the given directory
     private void getAllJavaFiles (String directoryPath, List<String> javaFiles) {
+        File directory = new File(directoryPath);
 
+        File[] filesAndDirectories = directory.listFiles();
+
+        if (filesAndDirectories == null) return;
+
+        for(File directoryOrFile : filesAndDirectories) {
+            String directoryOrFilePath = directoryOrFile.getAbsolutePath();
+
+            if (directoryOrFile.isFile() && directoryOrFilePath.endsWith(".java")) {
+                javaFiles.add(directoryOrFilePath);
+            }
+            else if (directoryOrFile.isDirectory()) {
+                getAllJavaFiles(directoryOrFilePath, javaFiles);
+            }
+        }
     }
 
-    private void parseFile(String filePath){
+    private void parseFile(String filePath) {
 
     }
 
