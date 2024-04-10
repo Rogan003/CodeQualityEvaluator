@@ -27,12 +27,16 @@ public abstract class CodeComponent {
         this.name = name;
     }
 
-    public void EvaluateComplexity () {
-        // Recursive algorithm that is going to go through every nested component and get the component complexity score
+    public void evaluateComplexity() {
+        this.evaluateComplexityRecursive(this.componentComplexityScore);
     }
 
-    public boolean EvaluateNamingConvention () {
-        String camelCaseRegex = "^[a-z]+(?:[A-Z][a-z]*)*$";
+    public void evaluateComplexityRecursive(ComponentComplexityScore componentComplexityScore) {
+
+    }
+
+    public boolean evaluateNamingConvention() {
+        String camelCaseRegex = "^[a-z]+(?:[A-Z][a-z0-9]*)*$";
 
         // Compile the regex pattern
         Pattern pattern = Pattern.compile(camelCaseRegex);

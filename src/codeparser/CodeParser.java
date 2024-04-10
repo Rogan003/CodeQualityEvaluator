@@ -48,11 +48,11 @@ public class CodeParser {
 
     }
 
-    public void MethodsWithHighestComplexityScores () {
+    public void methodsWithHighestComplexityScores() {
         final int numberOfOutputs = Math.min(this.codeComponents.size(), 3);
 
         for (CodeComponent codeComponent : this.codeComponents) {
-            codeComponent.EvaluateComplexity();
+            codeComponent.evaluateComplexity();
         }
 
         // is it smart to sort this list? I think it doesn't matter at least for this program
@@ -67,14 +67,14 @@ public class CodeParser {
         System.out.print("\n");
     }
 
-    public void MethodsNotInCamelCase () {
+    public void methodsNotInCamelCase() {
         // change the name if you stay with variable check
         double numberOfMethods = 0, numberOfInvalidMethodNames = 0;
         for(CodeComponent codeComponent : this.codeComponents) {
             if (codeComponent.getClass() == Method.class || codeComponent.getClass() == Variable.class) {
                 numberOfMethods++;
 
-                if (!codeComponent.EvaluateNamingConvention()) {
+                if (!codeComponent.evaluateNamingConvention()) {
                     numberOfInvalidMethodNames++;
                 }
             }
