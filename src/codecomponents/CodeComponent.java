@@ -32,7 +32,28 @@ public abstract class CodeComponent {
     }
 
     public void evaluateComplexityRecursive(ComponentComplexityScore componentComplexityScore) {
+        for (CodeComponent nestedComponent : this.nestedComponents) {
+            if (nestedComponent instanceof Class) {
+                componentComplexityScore.increaseNumberOfClasses();
+            }
+            else if (nestedComponent instanceof Comment) {
+                componentComplexityScore.increaseNumberOfComments();
+            }
+            else if (nestedComponent instanceof ConditionalStatement) {
+                componentComplexityScore.increaseNumberOfConditionalStatements();
+            }
+            else if (nestedComponent instanceof Loop) {
+                componentComplexityScore.increaseNumberOfLoops();
+            }
+            else if (nestedComponent instanceof Method) {
+                componentComplexityScore.increaseNumberOfMethods();
+            }
+            else if (nestedComponent instanceof  Variable) {
+                componentComplexityScore.increaseNumberOfVariables();
+            }
 
+            nestedComponent.evaluateComplexityRecursive(componentComplexityScore);
+        }
     }
 
     public boolean evaluateNamingConvention() {
