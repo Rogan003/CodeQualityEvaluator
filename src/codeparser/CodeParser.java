@@ -1,6 +1,8 @@
 package codeparser;
 
 import codecomponents.CodeComponent;
+import codecomponents.Method;
+import codecomponents.Variable;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -54,12 +56,23 @@ public class CodeParser {
     }
 
     public void MethodsNotInCamelCase () {
-        for(CodeComponent codeComponent : codeComponents)
-        {
-            // Does codeComponents have all components or are some nested? Think about that
-            // Maybe it isnt important here because we need only methods?
+        double numberOfMethods = 0, numberOfInvalidMethodNames = 0;
+        for(CodeComponent codeComponent : codeComponents) {
+            if (codeComponent.getClass() == Method.class || codeComponent.getClass() == Variable.class) {
+                numberOfMethods++;
+
+                if (!codeComponent.EvaluateNamingConvention()) {
+                    numberOfInvalidMethodNames++;
+                }
+            }
         }
 
-        // Output percentage
+        if (numberOfMethods > 0) {
+            System.out.println(STR."Percentage of methods that do not adhere to the camelCase convention: \{
+                    (numberOfInvalidMethodNames / numberOfMethods) * 100}");
+        }
+        else {
+            System.out.println("Found number of methods is 0!");
+        }
     }
 }
