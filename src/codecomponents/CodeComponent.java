@@ -6,14 +6,20 @@ import java.util.regex.*;
 
 public abstract class CodeComponent {
     protected List<CodeComponent> nestedComponents;
-    protected String name;
 
+    protected ComponentComplexityScore componentComplexityScore;
+    public ComponentComplexityScore getComponentComplexityScore () {
+        return this.componentComplexityScore;
+    }
+
+    protected String name;
     public String getName () {
         return name;
     }
 
     public CodeComponent () {
         this.nestedComponents = new ArrayList<CodeComponent>();
+        this.componentComplexityScore = new ComponentComplexityScore();
     }
 
     public CodeComponent (String name) {
@@ -21,12 +27,8 @@ public abstract class CodeComponent {
         this.name = name;
     }
 
-    public ComponentComplexityScore EvaluateComplexity () {
-        ComponentComplexityScore componentComplexityScore = new ComponentComplexityScore();
-
+    public void EvaluateComplexity () {
         // Recursive algorithm that is going to go through every nested component and get the component complexity score
-
-        return componentComplexityScore;
     }
 
     public boolean EvaluateNamingConvention () {

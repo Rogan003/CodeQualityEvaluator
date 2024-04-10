@@ -49,6 +49,15 @@ public class ComponentComplexityScore {
         this.numberOfVariables++;
     }
 
+    private int finalScore;
+    public int getFinalScore () {
+        return this.finalScore;
+    }
+    public void calculateFinalScore () {
+        // for now its just this simple calculation
+        this.finalScore = this.numberOfLoops + this.numberOfConditionalStatements;
+    }
+
     public ComponentComplexityScore() {
         this.numberOfClasses = 0;
         this.numberOfComments = 0;
@@ -56,5 +65,19 @@ public class ComponentComplexityScore {
         this.numberOfLoops = 0;
         this.numberOfMethods = 0;
         this.numberOfVariables = 0;
+        this.finalScore = 0;
+    }
+
+    public String toString() {
+        String outputFinalScore = STR."\tNumber of classes: \{this.finalScore}\n";
+        String outputNumberOfClasses = STR."\tNumber of classes: \{this.numberOfClasses}\n";
+        String outputNumberOfComments = STR."\tNumber of classes: \{this.numberOfComments}\n";
+        String outputNumberOfConditionalStatements = STR."\tNumber of classes: \{this.numberOfConditionalStatements}\n";
+        String outputNumberOfLoops = STR."\tNumber of classes: \{this.numberOfLoops}\n";
+        String outputNumberOfMethods = STR."\tNumber of classes: \{this.numberOfMethods}\n";
+        String outputNumberOfVariables = STR."\tNumber of classes: \{this.numberOfVariables}\n";
+
+        return STR."\{outputFinalScore}\{outputNumberOfLoops}\{outputNumberOfConditionalStatements}" +
+        STR."\{outputNumberOfClasses}\{outputNumberOfComments}\{outputNumberOfMethods}\{outputNumberOfVariables}";
     }
 }

@@ -6,6 +6,7 @@ import codecomponents.Variable;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class CodeParser {
@@ -48,16 +49,28 @@ public class CodeParser {
     }
 
     public void MethodsWithHighestComplexityScores () {
-        for (CodeComponent codeComponent : codeComponents) {
+        final int numberOfOutputs = Math.min(this.codeComponents.size(), 3);
 
+        for (CodeComponent codeComponent : this.codeComponents) {
+            codeComponent.EvaluateComplexity();
         }
 
-        // Output 3 methods with highest complexity scores
+        // is it smart to sort this list? I think it doesn't matter at least for this program
+        this.codeComponents.sort(Comparator.comparingInt(o -> o.getComponentComplexityScore().getFinalScore()));
+
+        System.out.println("Components with highest complexity scores: ");
+        for (int i = 0;i < numberOfOutputs;i++) {
+            CodeComponent component = this.codeComponents.get(i);
+            System.out.println(STR."\{i}. component: \{component.getClass()} \{component.getName()}");
+            System.out.println(component.getComponentComplexityScore());
+        }
+        System.out.print("\n");
     }
 
     public void MethodsNotInCamelCase () {
+        // change the name if you stay with variable check
         double numberOfMethods = 0, numberOfInvalidMethodNames = 0;
-        for(CodeComponent codeComponent : codeComponents) {
+        for(CodeComponent codeComponent : this.codeComponents) {
             if (codeComponent.getClass() == Method.class || codeComponent.getClass() == Variable.class) {
                 numberOfMethods++;
 
@@ -68,11 +81,12 @@ public class CodeParser {
         }
 
         if (numberOfMethods > 0) {
-            System.out.println(STR."Percentage of methods that do not adhere to the camelCase convention: \{
+            System.out.println(STR."Percentage of methods and variables that do not adhere to the camelCase convention: \{
                     (numberOfInvalidMethodNames / numberOfMethods) * 100}");
         }
         else {
-            System.out.println("Found number of methods is 0!");
+            System.out.println("Found number of methods and variables is 0!");
         }
+        System.out.print("\n");
     }
 }
