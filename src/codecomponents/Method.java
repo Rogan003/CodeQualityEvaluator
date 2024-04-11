@@ -6,16 +6,16 @@ import com.github.javaparser.ast.stmt.*;
 
 import java.util.regex.*;
 
-public class CodeComponent {
+public class Method {
     private MethodDeclaration methodDeclaration;
-    private ComponentComplexityScore componentComplexityScore;
-    public ComponentComplexityScore getComponentComplexityScore () {
-        return this.componentComplexityScore;
+    private MethodComplexityScore methodComplexityScore;
+    public MethodComplexityScore getMethodComplexityScore() {
+        return this.methodComplexityScore;
     }
 
-    public CodeComponent (MethodDeclaration methodDeclaration) {
+    public Method(MethodDeclaration methodDeclaration) {
         this.methodDeclaration = methodDeclaration;
-        this.componentComplexityScore = new ComponentComplexityScore();
+        this.methodComplexityScore = new MethodComplexityScore();
     }
 
     public String getMethodName() {
@@ -33,13 +33,13 @@ public class CodeComponent {
                     || node instanceof ForEachStmt;
 
             if (isLoop) {
-                this.componentComplexityScore.increaseNumberOfLoops();
+                this.methodComplexityScore.increaseNumberOfLoops();
             } else if (node instanceof IfStmt || node instanceof SwitchStmt) {
-                this.componentComplexityScore.increaseNumberOfConditionalStatements();
+                this.methodComplexityScore.increaseNumberOfConditionalStatements();
             }
         }
 
-        this.componentComplexityScore.calculateFinalScore();
+        this.methodComplexityScore.calculateFinalScore();
     }
 
     public boolean evaluateNamingConvention() {

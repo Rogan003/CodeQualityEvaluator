@@ -1,6 +1,6 @@
 package codecomponents;
 
-public class ComponentComplexityScore {
+public class MethodComplexityScore {
     private int numberOfClasses;
     public int getNumberOfClasses () {
         return this.numberOfClasses;
@@ -58,7 +58,7 @@ public class ComponentComplexityScore {
         this.finalScore = this.numberOfLoops + this.numberOfConditionalStatements;
     }
 
-    public ComponentComplexityScore() {
+    public MethodComplexityScore() {
         this.numberOfClasses = 0;
         this.numberOfComments = 0;
         this.numberOfConditionalStatements = 0;

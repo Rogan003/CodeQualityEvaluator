@@ -1,6 +1,6 @@
 package codeparser;
 
-import codecomponents.CodeComponent;
+import codecomponents.Method;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.MethodDeclaration;
@@ -13,10 +13,10 @@ import java.util.Comparator;
 import java.util.List;
 
 public class CodeParser {
-    private List<CodeComponent> codeComponents;
+    private List<Method> methods;
 
     public CodeParser (File directory) {
-        this.codeComponents = new ArrayList<CodeComponent>();
+        this.methods = new ArrayList<Method>();
 
         List<String> javaFiles = new ArrayList<String>();
         getAllJavaFiles(directory, javaFiles);
@@ -49,7 +49,7 @@ public class CodeParser {
         try {
             CompilationUnit compilationUnit = StaticJavaParser.parse(new FileInputStream(filePath));
 
-            compilationUnit.findAll(MethodDeclaration.class).forEach(f -> this.codeComponents.add(new CodeComponent(f)));
+            compilationUnit.findAll(MethodDeclaration.class).forEach(f -> this.methods.add(new Method(f)));
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
@@ -57,21 +57,20 @@ public class CodeParser {
     }
 
     public void methodsWithHighestComplexityScores() {
-        final int numberOfOutputs = Math.min(this.codeComponents.size(), 3);
+        final int numberOfOutputs = Math.min(this.methods.size(), 3);
 
-        for (CodeComponent codeComponent : this.codeComponents) {
-            codeComponent.evaluateComplexity();
+        for (Method method : this.methods) {
+            method.evaluateComplexity();
         }
 
-        // is it smart to sort this list? I think it doesn't matter at least for this program
-        this.codeComponents.sort(Comparator.comparingInt(o -> ((CodeComponent) o).getComponentComplexityScore().getFinalScore()).reversed());
+        this.methods.sort(Comparator.comparingInt(o -> ((Method) o).getMethodComplexityScore().getFinalScore()).reversed());
 
         if (numberOfOutputs > 0) {
-            System.out.println("Components with highest complexity scores: ");
+            System.out.println("Methods with highest complexity scores: ");
             for (int i = 0;i < numberOfOutputs;i++) {
-                CodeComponent component = this.codeComponents.get(i);
-                System.out.println(STR."\{i + 1}. method: \{component.getMethodName()}");
-                System.out.println(component.getComponentComplexityScore());
+                Method method = this.methods.get(i);
+                System.out.println(STR."\{i + 1}. method: \{method.getMethodName()}");
+                System.out.println(method.getMethodComplexityScore());
             }
             System.out.print("\n");
         }
@@ -81,12 +80,11 @@ public class CodeParser {
     }
 
     public void methodsNotInCamelCase() {
-        // change the name if you stay with variable check
-        double numberOfMethods = this.codeComponents.size();
+        double numberOfMethods = this.methods.size();
         double numberOfInvalidMethodNames = 0;
 
-        for(CodeComponent codeComponent : this.codeComponents) {
-            if (!codeComponent.evaluateNamingConvention()) {
+        for(Method method : this.methods) {
+            if (!method.evaluateNamingConvention()) {
                 numberOfInvalidMethodNames++;
             }
         }
