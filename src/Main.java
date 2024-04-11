@@ -10,6 +10,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String directoryPath = scanner.nextLine();
 
+        System.out.print("\n");
+
         if (directoryPath.equalsIgnoreCase("default")) {
             directoryPath = "src/data/projekat_sv_36_2022";
         }

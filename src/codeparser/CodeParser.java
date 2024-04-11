@@ -90,11 +90,12 @@ public class CodeParser {
         }
 
         if (numberOfMethods > 0) {
-            System.out.println(STR."Percentage of methods that do not adhere to the camelCase convention: \{
-                    (numberOfInvalidMethodNames / numberOfMethods) * 100}");
+            System.out.printf("Percentage of methods that do not adhere to the camelCase convention: %.2f",
+                    (numberOfInvalidMethodNames / numberOfMethods) * 100);
         }
         else {
             System.out.println("Found number of methods for naming check is 0!");
         }
+        System.out.print("\n");
     }
 }
