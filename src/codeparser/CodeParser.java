@@ -3,8 +3,15 @@ package codeparser;
 import codecomponents.CodeComponent;
 import codecomponents.Method;
 import codecomponents.Variable;
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.stmt.*;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -45,7 +52,38 @@ public class CodeParser {
     }
 
     private void parseFile(String filePath) {
+        try {
+            CompilationUnit compilationUnit = StaticJavaParser.parse(new FileInputStream(filePath));
 
+            compilationUnit.findAll(MethodDeclaration.class).forEach(this::CountConditionalStatements);
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void CountConditionalStatements (MethodDeclaration method) {
+        BlockStmt methodBody = method.getBody().orElse(null);
+
+        if (methodBody == null) return;
+
+        int loopCount = 0;
+        int conditionalStatementCount = 0;
+
+        // Traverse the body of the method
+        for (Node node : methodBody.getChildNodes()) {
+            if (node instanceof ForStmt || node instanceof WhileStmt || node instanceof DoStmt) {
+                loopCount++;
+            } else if (node instanceof IfStmt || node instanceof SwitchStmt) {
+                conditionalStatementCount++;
+            }
+        }
+
+        // Print the method name and counts
+        System.out.println(STR."Method: \{method.getName()}");
+        System.out.println(STR."Loops: \{loopCount}");
+        System.out.println(STR."Conditional statements: \{conditionalStatementCount}");
+        System.out.println();
     }
 
     public void methodsWithHighestComplexityScores() {
