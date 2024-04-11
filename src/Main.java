@@ -13,7 +13,7 @@ public class Main {
         System.out.print("\n");
 
         if (directoryPath.equalsIgnoreCase("default")) {
-            directoryPath = "src/data/projekat_sv_36_2022";
+            directoryPath = "data/projekat_sv_36_2022";
         }
 
         File directory = new File(directoryPath);

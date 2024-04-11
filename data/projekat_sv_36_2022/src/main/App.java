@@ -1,5 +1,7 @@
 package main;
 
+import view.MainFrame;
+
 import manage.ManagerFactory;
 import utils.AppSettings;
 
@@ -21,6 +23,9 @@ public class App {
 		//controllers.testKt2();
 		//controllers.setKt3();
 		//controllers.testKt3();
+		
+		MainFrame main = new MainFrame(controllers);
+		main.toString(); // samo da ne stoji da je unused
 	}
 
 }

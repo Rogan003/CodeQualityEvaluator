@@ -7,8 +7,60 @@
     <list default="true" id="ff2088e0-049e-4dbc-964f-50ed37aa6469" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codecomponents/MethodComplexityScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codecomponents/MethodComplexityScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/codeparser/CodeParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeparser/CodeParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/Uputstvo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/data/cenovnik.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/data/klijenti.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/data/kozmeticari.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/data/kozmetickeUsluge.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/data/kozmetickiSalon.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/data/kozmetickiTretmani.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/data/menadzeri.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/data/recepcioneri.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/data/tipoviKozmetickihTretmana.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/img/add.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/img/add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/img/edit.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/img/remove.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/lib/miglayout-4.0-swing.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/lib/xchart-3.8.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/projekat_sv_36_2022.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/Cenovnik.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/IncrementId.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/Klijent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/Korisnik.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/Kozmeticar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/KozmetickaUsluga.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/KozmetickiSalon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/KozmetickiTretman.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/Menadzer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/Recepcioner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/Sprema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/StanjeKozmetickogTretmana.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/TipKozmetickogTretmana.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/ToFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/entity/Zaposleni.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/main/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/manage/CenovnikManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/manage/KlijentManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/manage/KozmeticarManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/manage/KozmetickaUslugaManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/manage/KozmetickiSalonManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/manage/KozmetickiTretmanManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/manage/ManagerFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/manage/MenadzerManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/manage/RecepcionerManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/manage/TipKozmetickogTretmanaManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/model/CenovnikModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/model/KlijentModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/model/KozmetickaUslugaModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/model/KozmetickiTretmanModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/model/MyModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/model/TipKozmetickogTretmanaModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/model/ZaposleniModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projekat_sv_36_2022/src/utils/AppSettings.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,29 +107,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "simple-version",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;simple-version&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -90,7 +142,8 @@
       <workItem from="1712669850173" duration="8081000" />
       <workItem from="1712748431623" duration="3927000" />
       <workItem from="1712783864885" duration="1788000" />
-      <workItem from="1712843208515" duration="8787000" />
+      <workItem from="1712843208515" duration="9163000" />
+      <workItem from="1712874488345" duration="421000" />
     </task>
     <servers />
   </component>
