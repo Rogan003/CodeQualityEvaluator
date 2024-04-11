@@ -1,13 +1,9 @@
 package codeparser;
 
 import codecomponents.CodeComponent;
-import codecomponents.Method;
-import codecomponents.Variable;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.stmt.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -55,35 +51,11 @@ public class CodeParser {
         try {
             CompilationUnit compilationUnit = StaticJavaParser.parse(new FileInputStream(filePath));
 
-            compilationUnit.findAll(MethodDeclaration.class).forEach(this::CountConditionalStatements);
+            compilationUnit.findAll(MethodDeclaration.class).forEach(f -> this.codeComponents.add(new CodeComponent(f)));
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private void CountConditionalStatements (MethodDeclaration method) {
-        BlockStmt methodBody = method.getBody().orElse(null);
-
-        if (methodBody == null) return;
-
-        int loopCount = 0;
-        int conditionalStatementCount = 0;
-
-        // Traverse the body of the method
-        for (Node node : methodBody.getChildNodes()) {
-            if (node instanceof ForStmt || node instanceof WhileStmt || node instanceof DoStmt) {
-                loopCount++;
-            } else if (node instanceof IfStmt || node instanceof SwitchStmt) {
-                conditionalStatementCount++;
-            }
-        }
-
-        // Print the method name and counts
-        System.out.println(STR."Method: \{method.getName()}");
-        System.out.println(STR."Loops: \{loopCount}");
-        System.out.println(STR."Conditional statements: \{conditionalStatementCount}");
-        System.out.println();
     }
 
     public void methodsWithHighestComplexityScores() {
@@ -94,12 +66,12 @@ public class CodeParser {
         }
 
         // is it smart to sort this list? I think it doesn't matter at least for this program
-        this.codeComponents.sort(Comparator.comparingInt(o -> o.getComponentComplexityScore().getFinalScore()));
+        this.codeComponents.sort(Comparator.comparingInt(o -> ((CodeComponent) o).getComponentComplexityScore().getFinalScore()).reversed());
 
         System.out.println("Components with highest complexity scores: ");
         for (int i = 0;i < numberOfOutputs;i++) {
             CodeComponent component = this.codeComponents.get(i);
-            System.out.println(STR."\{i}. component: \{component.getClass()} \{component.getName()}");
+            System.out.println(STR."\{i + 1}. method: \{component.getMethodName()}");
             System.out.println(component.getComponentComplexityScore());
         }
         System.out.print("\n");
@@ -107,14 +79,12 @@ public class CodeParser {
 
     public void methodsNotInCamelCase() {
         // change the name if you stay with variable check
-        double numberOfMethods = 0, numberOfInvalidMethodNames = 0;
-        for(CodeComponent codeComponent : this.codeComponents) {
-            if (codeComponent.getClass() == Method.class || codeComponent.getClass() == Variable.class) {
-                numberOfMethods++;
+        double numberOfMethods = this.codeComponents.size();
+        double numberOfInvalidMethodNames = 0;
 
-                if (!codeComponent.evaluateNamingConvention()) {
-                    numberOfInvalidMethodNames++;
-                }
+        for(CodeComponent codeComponent : this.codeComponents) {
+            if (!codeComponent.evaluateNamingConvention()) {
+                numberOfInvalidMethodNames++;
             }
         }
 

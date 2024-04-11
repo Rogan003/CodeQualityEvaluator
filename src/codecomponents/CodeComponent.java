@@ -1,59 +1,45 @@
 package codecomponents;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.stmt.*;
+
 import java.util.regex.*;
 
-public abstract class CodeComponent {
-    protected List<CodeComponent> nestedComponents;
-
-    protected ComponentComplexityScore componentComplexityScore;
+public class CodeComponent {
+    private MethodDeclaration methodDeclaration;
+    private ComponentComplexityScore componentComplexityScore;
     public ComponentComplexityScore getComponentComplexityScore () {
         return this.componentComplexityScore;
     }
 
-    protected String name;
-    public String getName () {
-        return name;
-    }
-
-    public CodeComponent () {
-        this.nestedComponents = new ArrayList<CodeComponent>();
+    public CodeComponent (MethodDeclaration methodDeclaration) {
+        this.methodDeclaration = methodDeclaration;
         this.componentComplexityScore = new ComponentComplexityScore();
     }
 
-    public CodeComponent (String name) {
-        this();
-        this.name = name;
+    public String getMethodName() {
+        return methodDeclaration.getName().toString();
     }
 
     public void evaluateComplexity() {
-        this.evaluateComplexityRecursive(this.componentComplexityScore);
-    }
+        BlockStmt methodBody = methodDeclaration.getBody().orElse(null);
 
-    public void evaluateComplexityRecursive(ComponentComplexityScore componentComplexityScore) {
-        for (CodeComponent nestedComponent : this.nestedComponents) {
-            if (nestedComponent instanceof Class) {
-                componentComplexityScore.increaseNumberOfClasses();
-            }
-            else if (nestedComponent instanceof Comment) {
-                componentComplexityScore.increaseNumberOfComments();
-            }
-            else if (nestedComponent instanceof ConditionalStatement) {
-                componentComplexityScore.increaseNumberOfConditionalStatements();
-            }
-            else if (nestedComponent instanceof Loop) {
-                componentComplexityScore.increaseNumberOfLoops();
-            }
-            else if (nestedComponent instanceof Method) {
-                componentComplexityScore.increaseNumberOfMethods();
-            }
-            else if (nestedComponent instanceof  Variable) {
-                componentComplexityScore.increaseNumberOfVariables();
-            }
+        if (methodBody == null) return;
 
-            nestedComponent.evaluateComplexityRecursive(componentComplexityScore);
+        // Traverse the body of the method
+        for (Node node : methodBody.getChildNodes()) {
+            boolean isLoop = node instanceof ForStmt || node instanceof WhileStmt || node instanceof DoStmt
+                    || node instanceof ForEachStmt;
+
+            if (isLoop) {
+                this.componentComplexityScore.increaseNumberOfLoops();
+            } else if (node instanceof IfStmt || node instanceof SwitchStmt) {
+                this.componentComplexityScore.increaseNumberOfConditionalStatements();
+            }
         }
+
+        this.componentComplexityScore.calculateFinalScore();
     }
 
     public boolean evaluateNamingConvention() {
@@ -63,7 +49,7 @@ public abstract class CodeComponent {
         Pattern pattern = Pattern.compile(camelCaseRegex);
 
         // Create a matcher with the input string
-        Matcher matcher = pattern.matcher(this.name);
+        Matcher matcher = pattern.matcher(this.getMethodName());
 
         // Check if the input matches the camel case regex
         return matcher.matches();

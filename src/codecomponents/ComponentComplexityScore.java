@@ -69,13 +69,13 @@ public class ComponentComplexityScore {
     }
 
     public String toString() {
-        String outputFinalScore = STR."\tNumber of classes: \{this.finalScore}\n";
+        String outputFinalScore = STR."\tFinal score: \{this.finalScore}\n";
         String outputNumberOfClasses = STR."\tNumber of classes: \{this.numberOfClasses}\n";
-        String outputNumberOfComments = STR."\tNumber of classes: \{this.numberOfComments}\n";
-        String outputNumberOfConditionalStatements = STR."\tNumber of classes: \{this.numberOfConditionalStatements}\n";
-        String outputNumberOfLoops = STR."\tNumber of classes: \{this.numberOfLoops}\n";
-        String outputNumberOfMethods = STR."\tNumber of classes: \{this.numberOfMethods}\n";
-        String outputNumberOfVariables = STR."\tNumber of classes: \{this.numberOfVariables}\n";
+        String outputNumberOfComments = STR."\tNumber of comments: \{this.numberOfComments}\n";
+        String outputNumberOfConditionalStatements = STR."\tNumber of ifs/switches: \{this.numberOfConditionalStatements}\n";
+        String outputNumberOfLoops = STR."\tNumber of loops: \{this.numberOfLoops}\n";
+        String outputNumberOfMethods = STR."\tNumber of methods: \{this.numberOfMethods}\n";
+        String outputNumberOfVariables = STR."\tNumber of variables: \{this.numberOfVariables}\n";
 
         return STR."\{outputFinalScore}\{outputNumberOfLoops}\{outputNumberOfConditionalStatements}" +
         STR."\{outputNumberOfClasses}\{outputNumberOfComments}\{outputNumberOfMethods}\{outputNumberOfVariables}";
