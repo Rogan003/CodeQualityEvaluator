@@ -53,6 +53,8 @@ public class CodeParser {
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
+        } catch (Exception e) {
+            System.out.println("Error while parsing input files!\n");
         }
     }
 
@@ -80,8 +82,8 @@ public class CodeParser {
     }
 
     public void methodsNotInCamelCase() {
-        double numberOfMethods = this.methods.size();
-        double numberOfInvalidMethodNames = 0;
+        int numberOfMethods = this.methods.size();
+        int numberOfInvalidMethodNames = 0;
 
         for(Method method : this.methods) {
             if (!method.evaluateNamingConvention()) {
@@ -90,8 +92,8 @@ public class CodeParser {
         }
 
         if (numberOfMethods > 0) {
-            System.out.printf("Percentage of methods that do not adhere to the camelCase convention: %.2f",
-                    (numberOfInvalidMethodNames / numberOfMethods) * 100);
+            System.out.printf("Percentage of methods that do not adhere to the camelCase convention: %.2f%%",
+                    ( (double) numberOfInvalidMethodNames / (double) numberOfMethods) * 100);
         }
         else {
             System.out.println("Found number of methods for naming check is 0!");
