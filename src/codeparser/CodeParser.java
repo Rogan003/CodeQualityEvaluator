@@ -1,13 +1,12 @@
 package codeparser;
 
-import codecomponents.Method;
+import method.Method;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.MethodDeclaration;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -26,10 +25,10 @@ public class CodeParser {
     public CodeParser (File directory) {
         this.methods = new ArrayList<Method>();
 
-        List<String> javaFilePaths = new ArrayList<String>();
-        getAllJavaFiles(directory, javaFilePaths);
+        List<String> javaFilesPaths = new ArrayList<String>();
+        getAllJavaFilesPaths(directory, javaFilesPaths);
 
-        for (String filePath : javaFilePaths) {
+        for (String filePath : javaFilesPaths) {
             parseFile(filePath);
         }
     }
@@ -40,7 +39,7 @@ public class CodeParser {
      * @param directory - directory that is being checked
      * @param javaFilesPaths - list of all the found java file paths
      */
-    private void getAllJavaFiles (File directory, List<String> javaFilesPaths) {
+    private void getAllJavaFilesPaths (File directory, List<String> javaFilesPaths) {
         File[] filesAndDirectories = directory.listFiles();
 
         if (filesAndDirectories == null) return;
@@ -52,25 +51,26 @@ public class CodeParser {
                 javaFilesPaths.add(directoryOrFilePath);
             }
             else if (directoryOrFile.isDirectory()) {
-                getAllJavaFiles(directoryOrFile, javaFilesPaths);
+                getAllJavaFilesPaths(directoryOrFile, javaFilesPaths);
             }
         }
     }
 
     /**
-     * Method for parsing the file on the given file path
+     * Method for parsing the file on the given file path and adding all the methods from that file
+     * to the list of methods
      * Firstly the file goes through preprocessing, then it is being parsed by the JavaParser
      * and all the methods found in the file are added to the list of methods
      * @param filePath - path to the file
      */
-    private void parseFile(String filePath) {
+    private void parseFile (String filePath) {
         try {
             String preprocessedFileContent = preprocessFile(filePath);
             CompilationUnit compilationUnit = StaticJavaParser.parse(preprocessedFileContent);
 
             compilationUnit.findAll(MethodDeclaration.class).forEach(f -> this.methods.add(new Method(f)));
         } catch (Exception e) {
-            System.out.printf("ERROR: Error while parsing input file: %s!\n\n", filePath);
+            System.out.printf("ERROR: Parsing file failed: %s!\n\n", filePath);
         }
     }
 
@@ -81,7 +81,7 @@ public class CodeParser {
      * @param filePath - path to the file that should be preprocessed
      * @return String that has the preprocessed file content
      */
-    private String preprocessFile(String filePath) {
+    private String preprocessFile (String filePath) {
         String fileContent = getFileContent(filePath);
         return this.eraseStringTemplates(fileContent);
     }
@@ -91,32 +91,32 @@ public class CodeParser {
      * @return String that has all the content from the file on the given file path
      */
     private String getFileContent (String filePath) {
-        FileInputStream fis = null;
-        StringBuilder contents = new StringBuilder();
+        FileInputStream fileInputStream;
+        StringBuilder fileContent = new StringBuilder();
 
         try {
-            fis = new FileInputStream(filePath);
+            fileInputStream = new FileInputStream(filePath);
 
             int byteRead;
-            while ((byteRead = fis.read()) != -1) {
-                contents.append((char) byteRead);
+            while ((byteRead = fileInputStream.read()) != -1) {
+                fileContent.append((char) byteRead);
             }
-            fis.close();
+            fileInputStream.close();
         }
         catch (IOException e) {
-            System.out.printf("ERROR: Error while preprocessing file: %s!\n\n", filePath);
+            System.out.printf("ERROR: Preprocessing file failed: %s!\n\n", filePath);
             return "";
         }
 
-        return contents.toString();
+        return fileContent.toString();
     }
 
     /**
-     * Method that is erasing all the string templates from given java file content using regex
+     * Method that is erasing all the string templates from the given java file content using regex
      * @param fileContent - java file content
      * @return Java file content without string templates
      */
-    private String eraseStringTemplates(String fileContent) {
+    private String eraseStringTemplates (String fileContent) {
         String regexForStringTemplates = "STR\\.\".*\"";
 
         Pattern pattern = Pattern.compile(regexForStringTemplates);
@@ -128,24 +128,25 @@ public class CodeParser {
 
     // Method that sorts all the methods based on their complexity scores
     // and outputs 3 methods with the highest scores
-    public void methodsWithHighestComplexityScores() {
+    public void methodsWithHighestComplexityScores () {
         final int numberOfOutputs = Math.min(this.methods.size(), 3);
 
-        // Evaluate every methods complexity score
+        // Evaluate complexity score for every method
         for (Method method : this.methods) {
             method.evaluateComplexity();
         }
 
         // Sort the methods based on their complexity scores
-        this.methods.sort(Comparator.comparingInt(o -> ((Method) o).getMethodComplexityScore().getFinalScore()).reversed());
+        this.methods.sort(Comparator.comparingInt(method ->
+                ((Method) method).getComplexityScore().getFinalScore()).reversed());
 
-        // Output
+        // Output the three most complex methods
         if (numberOfOutputs > 0) {
             System.out.println("Methods with highest complexity scores: ");
             for (int i = 0;i < numberOfOutputs;i++) {
                 Method method = this.methods.get(i);
                 System.out.println(STR."\{i + 1}. method: \{method.getMethodName()}");
-                System.out.println(method.getMethodComplexityScore());
+                System.out.println(method.getComplexityScore());
             }
             System.out.print("\n");
         }
@@ -155,10 +156,11 @@ public class CodeParser {
     }
 
     // Method that calculates and outputs the percentage of methods that do not adhere to the camelCase convention
-    public void methodsNotInCamelCase() {
+    public void methodsNotInCamelCase () {
         int numberOfMethods = this.methods.size();
         int numberOfInvalidMethodNames = 0;
 
+        // Calculating the amount of invalid method names
         for(Method method : this.methods) {
             if (!method.evaluateNamingConvention()) {
                 numberOfInvalidMethodNames++;
