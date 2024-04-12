@@ -52,9 +52,9 @@ public class CodeParser {
             compilationUnit.findAll(MethodDeclaration.class).forEach(f -> this.methods.add(new Method(f)));
 
         } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
+            System.out.println("ERROR: File not found!");
         } catch (Exception e) {
-            System.out.println("Error while parsing input files!\n");
+            System.out.println("ERROR: Error while parsing input files!\n");
         }
     }
 

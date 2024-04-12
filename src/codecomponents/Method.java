@@ -53,7 +53,7 @@ public class Method {
     }
 
     public boolean evaluateNamingConvention () {
-        String camelCaseRegex = "^[a-z]+(?:[A-Z][a-z0-9]*)*$";
+        String camelCaseRegex = "^[a-z]+(?:[A-Z][a-z0-9]*|[0-9]*)*";
 
         // Compile the regex pattern
         Pattern pattern = Pattern.compile(camelCaseRegex);
