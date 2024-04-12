@@ -1,7 +1,7 @@
 package codecomponents;
 
 // Class that models the complexity score of a method
-// Keeps the number of conditional statements (if, switch), number of loops
+// Keeps the number of conditional statements (if/switch statements), number of loops
 // and also the final score which is the sum of the previous two
 // Has methods to increment the number of conditional statements and loops and to calculate the final score
 public class MethodComplexityScore {
@@ -32,7 +32,7 @@ public class MethodComplexityScore {
 
     public String toString() {
         String outputFinalScore = STR."\tFinal score: \{this.finalScore}\n";
-        String outputNumberOfConditionalStatements = STR."\tNumber of ifs/switches: \{this.numberOfConditionalStatements}\n";
+        String outputNumberOfConditionalStatements = STR."\tNumber of if/switch statements: \{this.numberOfConditionalStatements}\n";
         String outputNumberOfLoops = STR."\tNumber of loops: \{this.numberOfLoops}\n";
 
         return STR."\{outputFinalScore}\{outputNumberOfLoops}\{outputNumberOfConditionalStatements}";
