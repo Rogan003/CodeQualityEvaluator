@@ -8,9 +8,11 @@ import com.github.javaparser.ast.body.MethodDeclaration;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class CodeParser {
     private List<Method> methods;
@@ -18,10 +20,10 @@ public class CodeParser {
     public CodeParser (File directory) {
         this.methods = new ArrayList<Method>();
 
-        List<String> javaFiles = new ArrayList<String>();
-        getAllJavaFiles(directory, javaFiles);
+        List<String> javaFilePaths = new ArrayList<String>();
+        getAllJavaFiles(directory, javaFilePaths);
 
-        for (String filePath : javaFiles) {
+        for (String filePath : javaFilePaths) {
             parseFile(filePath);
         }
     }
@@ -47,15 +49,40 @@ public class CodeParser {
 
     private void parseFile(String filePath) {
         try {
-            CompilationUnit compilationUnit = StaticJavaParser.parse(new FileInputStream(filePath));
+            String preprocessedFileContent = preprocessFile(filePath);
+            CompilationUnit compilationUnit = StaticJavaParser.parse(preprocessedFileContent);
 
             compilationUnit.findAll(MethodDeclaration.class).forEach(f -> this.methods.add(new Method(f)));
-
-        } catch (FileNotFoundException e) {
-            System.out.println("ERROR: File not found!");
         } catch (Exception e) {
-            System.out.println("ERROR: Error while parsing input files!\n");
+            System.out.printf("ERROR: Error while parsing input file: %s!\n\n", filePath);
         }
+    }
+
+    private String preprocessFile(String filePath) {
+        FileInputStream fis = null;
+        StringBuilder contents = new StringBuilder();
+
+        try {
+            fis = new FileInputStream(filePath);
+
+            int byteRead;
+            while ((byteRead = fis.read()) != -1) {
+                contents.append((char) byteRead);
+            }
+            fis.close();
+        }
+        catch (IOException e) {
+            System.out.printf("ERROR: Error while preprocessing file: %s!\n\n", filePath);
+            return "";
+        }
+
+        String regexForStringTemplates = "STR\\.\".*\"";
+
+        Pattern pattern = Pattern.compile(regexForStringTemplates);
+
+        String preprocessedFileContents = pattern.matcher(contents).replaceAll("\"\"");
+
+        return preprocessedFileContents;
     }
 
     public void methodsWithHighestComplexityScores() {
