@@ -11,7 +11,7 @@ import java.util.regex.*;
 // Class that simulates a method/function found in the code
 // Keeps the method complexity score and the method declaration,
 // which is an object of MethodDeclaration class of JavaParser,
-// and it has all important parsed details about the method
+// and it has all important parsed details about the method, like method name and body
 // Has methods for evaluating complexity and evaluating the camelCase name convention
 public class Method {
     private final MethodDeclaration declaration;

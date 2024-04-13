@@ -4,6 +4,7 @@ import method.Method;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.MethodDeclaration;
+import org.checkerframework.checker.units.qual.A;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,6 +16,9 @@ import java.util.regex.Pattern;
 
 // The most important class - CodeParser
 // Keeps the list of methods found in all the java files in the given directory
+// Has methods to get all the java files from the given directory, parse them,
+// add all the methods to his list of methods,
+// getting the three most complex methods and getting percentage of method names that are not in camelCase
 public class CodeParser {
     private List<Method> methods;
 
@@ -128,7 +132,11 @@ public class CodeParser {
 
     // Method that sorts all the methods based on their complexity scores
     // and outputs 3 methods with the highest scores
-    public void methodsWithHighestComplexityScores () {
+    public List<Method> methodsWithHighestComplexityScores () throws Exception{
+        if (this.methods.isEmpty()) {
+            throw new Exception();
+        }
+
         final int numberOfOutputs = Math.min(this.methods.size(), 3);
 
         // Evaluate complexity score for every method
@@ -140,24 +148,24 @@ public class CodeParser {
         this.methods.sort(Comparator.comparingInt(method ->
                 ((Method) method).getComplexityScore().getFinalScore()).reversed());
 
-        // Output the three most complex methods
-        if (numberOfOutputs > 0) {
-            System.out.println("Methods with highest complexity scores: ");
-            for (int i = 0;i < numberOfOutputs;i++) {
-                Method method = this.methods.get(i);
-                System.out.println(STR."\{i + 1}. method: \{method.getMethodName()}");
-                System.out.println(method.getComplexityScore());
-            }
-            System.out.print("\n");
+        List<Method> methodsWithHighestComplexityScores = new ArrayList<Method>();
+
+        for (int i = 0;i < numberOfOutputs;i++) {
+            Method method = this.methods.get(i);
+            methodsWithHighestComplexityScores.add(method);
         }
-        else {
-            System.out.println("Found number of methods for complexity check is 0!");
-        }
+
+        return methodsWithHighestComplexityScores;
     }
 
     // Method that calculates and outputs the percentage of methods that do not adhere to the camelCase convention
-    public void methodsNotInCamelCase () {
+    public double percentageOfMethodsNotInCamelCase () throws Exception {
         int numberOfMethods = this.methods.size();
+
+        if (numberOfMethods == 0) {
+            throw new Exception();
+        }
+
         int numberOfInvalidMethodNames = 0;
 
         // Calculating the amount of invalid method names
@@ -167,13 +175,6 @@ public class CodeParser {
             }
         }
 
-        if (numberOfMethods > 0) {
-            System.out.printf("Percentage of methods that do not adhere to the camelCase convention: %.2f%%",
-                    ( (double) numberOfInvalidMethodNames / (double) numberOfMethods) * 100);
-        }
-        else {
-            System.out.println("Found number of methods for naming check is 0!");
-        }
-        System.out.print("\n");
+        return ( (double) numberOfInvalidMethodNames / (double) numberOfMethods) * 100;
     }
 }
