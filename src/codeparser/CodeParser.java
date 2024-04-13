@@ -1,5 +1,6 @@
 package codeparser;
 
+import exceptions.NoMethodsFoundException;
 import method.Method;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.CompilationUnit;
@@ -14,16 +15,17 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Pattern;
 
-// The most important class - CodeParser
+// The core class - CodeParser
 // Keeps the list of methods found in all the java files in the given directory
 // Has methods to get all the java files from the given directory, parse them,
 // add all the methods to his list of methods,
-// getting the three most complex methods and getting percentage of method names that are not in camelCase
+// get the three most complex methods and get percentage of method names that are not in camelCase
 public class CodeParser {
     private List<Method> methods;
 
     /**
-     * Constructor - finds all the java files inside the given directory and parses them
+     * Constructor - finds all the java files inside the given directory, parses them
+     * and finds and adds all the methods from them
      * @param directory - directory which has the java files that should be evaluated
      */
     public CodeParser (File directory) {
@@ -68,20 +70,16 @@ public class CodeParser {
      * @param filePath - path to the file
      */
     private void parseFile (String filePath) {
-        try {
-            String preprocessedFileContent = preprocessFile(filePath);
-            CompilationUnit compilationUnit = StaticJavaParser.parse(preprocessedFileContent);
+        String preprocessedFileContent = preprocessFile(filePath);
+        CompilationUnit compilationUnit = StaticJavaParser.parse(preprocessedFileContent);
 
-            compilationUnit.findAll(MethodDeclaration.class).forEach(f -> this.methods.add(new Method(f)));
-        } catch (Exception e) {
-            System.out.printf("ERROR: Parsing file failed: %s!\n\n", filePath);
-        }
+        compilationUnit.findAll(MethodDeclaration.class).forEach(f -> this.methods.add(new Method(f)));
     }
 
     /**
-     * Preprocessing erases all found string templates,
+     * Preprocessing reads and stores all the java code as a string, and erases all found string templates,
      * because JavaParser cannot currently parse them
-     * and they are not playing any role in this program
+     * and they are not important for this program
      * @param filePath - path to the file that should be preprocessed
      * @return String that has the preprocessed file content
      */
@@ -108,7 +106,7 @@ public class CodeParser {
             fileInputStream.close();
         }
         catch (IOException e) {
-            System.out.printf("ERROR: Preprocessing file failed: %s!\n\n", filePath);
+            System.out.printf("WARNING: Preprocessing file failed: %s!\n\n", filePath);
             return "";
         }
 
@@ -130,11 +128,15 @@ public class CodeParser {
         return pattern.matcher(fileContent).replaceAll("\"\"");
     }
 
-    // Method that sorts all the methods based on their complexity scores
-    // and outputs 3 methods with the highest scores
-    public List<Method> methodsWithHighestComplexityScores () throws Exception{
+    /**
+     * Method that sorts all the methods based on their complexity scores
+     * and returns 3 methods with the highest scores (the amount, 3, can be changed through code)
+     * @return List of 3 methods with the highest complexity scores
+     * @throws NoMethodsFoundException - Exception for when no methods are found in java files
+     */
+    public List<Method> methodsWithHighestComplexityScores () throws NoMethodsFoundException {
         if (this.methods.isEmpty()) {
-            throw new Exception();
+            throw new NoMethodsFoundException();
         }
 
         final int numberOfOutputs = Math.min(this.methods.size(), 3);
@@ -158,12 +160,16 @@ public class CodeParser {
         return methodsWithHighestComplexityScores;
     }
 
-    // Method that calculates and outputs the percentage of methods that do not adhere to the camelCase convention
-    public double percentageOfMethodsNotInCamelCase () throws Exception {
+    /**
+     * Method that calculates and outputs the percentage of methods that do not adhere to the camelCase convention
+     * @return Percentage of methods that do not adhere to the camelCase convention
+     * @throws NoMethodsFoundException - Exception for when no methods are found in java files
+     */
+    public double percentageOfMethodsNotInCamelCase () throws NoMethodsFoundException {
         int numberOfMethods = this.methods.size();
 
         if (numberOfMethods == 0) {
-            throw new Exception();
+            throw new NoMethodsFoundException();
         }
 
         int numberOfInvalidMethodNames = 0;
@@ -175,6 +181,6 @@ public class CodeParser {
             }
         }
 
-        return ( (double) numberOfInvalidMethodNames / (double) numberOfMethods) * 100;
+        return ((double) numberOfInvalidMethodNames / (double) numberOfMethods) * 100;
     }
 }

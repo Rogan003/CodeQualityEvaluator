@@ -26,6 +26,7 @@ After the input, the application will do its magic, and you will see the top thr
 At the first glance, I thought that this will be much more complex than it actually was. Right now, at the end, it seems pretty interesting and simple. It was very fun to do this and I also learned something new.
 
 This project can be divided into 3 parts, main class (with main method), method package (with Method and MethodComplexityScore classes, representing methods found in the parsed code and everything related to them) and codeparser package (with CodeParser class, that parses java files, keeps all found methods and evaluates them).
+There is also the exceptions package and it holds one special custom exception class for this program.
 Every single part serves its purpose, and they connect and work together perfectly.
 
 Main method is the entry point of this program. The program here gets user input about the directory path and gives that directory to the CodeParser and runs his methods and outputs the results.
@@ -33,7 +34,7 @@ Main method is the entry point of this program. The program here gets user input
 CodeParser class is a part of codeparser package. It has a purpose to get all the java files from the given directory, parse them, add all the methods to his list of methods, and then it has two functions that are actually visible to user - getting the three most complex methods and getting the percentage of method names that are not in camelCase.
 Getting all the java files was done recursively (to also check all the nested directories), searching for all the files with names that end in .java and every java file in the given and nested directories was then parsed.
 The parsing was done with the help of JavaParser library (learned something new!), but every file was also preprocessed before it was parsed (because of a JavaParser bug with string templates). After the parsing all the methods found were added to the list of Method objects in CodeParser class.
-Getting the most complex methods and percentage of method names that are not in camelCase was pretty easy, because Method class has methods to evaluate method complexity and to check if the method is named following the camelCase convention. All it took then was to run through all the methods and sort them/output the best/output the numbers.
+Getting the most complex methods and percentage of method names that are not in camelCase was pretty easy, because Method class has methods to evaluate method complexity and to check if the method is named following the camelCase convention. All it took then was to run through all the methods and sort them/get the best/get the percentage.
 
 Method class has the two already mentioned method and keeps its own declaration and complexity score (which is an object of the class MethodComplexityScore).
 Evaluate complexity method for a goal has to calculate the number of loops and conditional statements. This is written recursively, because each code component inside the method body can also have its own code components (example: nested loops). So the method is calculating all loops and conditional statements on the surface, but also the nested ones.

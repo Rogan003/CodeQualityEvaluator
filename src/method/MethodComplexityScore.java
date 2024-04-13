@@ -3,7 +3,7 @@ package method;
 // Class that models the complexity score of a method
 // Keeps the number of conditional statements (if/switch statements), number of loops
 // and also the final score which is the sum of the previous two
-// Has methods to increment the number of conditional statements and loops and to calculate the final score
+// Has methods to increment the number of conditional statements and loops, and to calculate the final score
 public class MethodComplexityScore {
     private int numberOfConditionalStatements;
     public void incrementNumberOfConditionalStatements () {

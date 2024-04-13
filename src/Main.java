@@ -1,4 +1,5 @@
 import codeparser.CodeParser;
+import exceptions.NoMethodsFoundException;
 import method.Method;
 
 import java.io.File;
@@ -29,30 +30,26 @@ public class Main {
 
         CodeParser codeParser = new CodeParser(directory);
 
-        // Running the 2 important output methods
+        // Output methods with the highest complexity scores and
+        // percentage of method names that aren't following camelCase
         try {
             List<Method> methodsWithHighestComplexityScore = codeParser.methodsWithHighestComplexityScores();
 
-            int methodPlacement = 1;
+            int methodPosition = 1;
             System.out.println("Methods with highest complexity scores: ");
             for (Method method : methodsWithHighestComplexityScore) {
-                System.out.println(STR."\{methodPlacement + 1}. method: \{method.getMethodName()}");
+                System.out.println(STR."\{methodPosition}. method: \{method.getMethodName()}");
                 System.out.println(method.getComplexityScore());
 
-                methodPlacement++;
+                methodPosition++;
             }
             System.out.print("\n");
-        }
-        catch (Exception e) {
-            System.out.println("Found number of methods for complexity check is 0!");
-        }
 
-        try {
-            System.out.printf("Percentage of methods that do not adhere to the camelCase convention: %.2f%%",
+            System.out.printf("Percentage of methods that do not adhere to the camelCase convention: %.2f%%\n",
                     codeParser.percentageOfMethodsNotInCamelCase());
         }
-        catch (Exception e) {
-            System.out.println("Found number of methods for naming check is 0!");
+        catch (NoMethodsFoundException noMethodsFoundException) {
+            System.out.println("Found number of methods for complexity and naming check is 0!");
         }
     }
 }

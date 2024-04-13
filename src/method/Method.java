@@ -11,7 +11,7 @@ import java.util.regex.*;
 // Class that simulates a method/function found in the code
 // Keeps the method complexity score and the method declaration,
 // which is an object of MethodDeclaration class of JavaParser,
-// and it has all important parsed details about the method, like method name and body
+// and has all important parsed details about the method, like method name and body
 // Has methods for evaluating complexity and evaluating the camelCase name convention
 public class Method {
     private final MethodDeclaration declaration;
@@ -22,10 +22,10 @@ public class Method {
 
     /**
      * Constructor that takes in the method declaration that was parsed and creates the starting complexity score
-     * @param declaration - parsed method declaration
+     * @param parsedDeclaration - parsed method declaration
      */
-    public Method (MethodDeclaration declaration) {
-        this.declaration = declaration;
+    public Method (MethodDeclaration parsedDeclaration) {
+        this.declaration = parsedDeclaration;
         this.complexityScore = new MethodComplexityScore();
     }
 
@@ -33,7 +33,7 @@ public class Method {
         return declaration.getName().toString();
     }
 
-    // Evaluates method complexity through a recursive method and calculates the final score of the method
+    // Evaluates method complexity through a recursive method and then calculates the final score of the method
     public void evaluateComplexity () {
         evaluateComplexityRecursive(declaration.getBody().orElse(null));
 
@@ -42,29 +42,29 @@ public class Method {
 
     /**
      * Recursive method to evaluate the complexity of the method
-     * It should be recursive, because some of the code components (nodes) inside the method body also have
-     * their own body, which can have loops and/or conditional statements (example: nested loop)
+     * It is recursive, because some of the code components (nodes) inside the method body also have
+     * their own body, which can have loops and/or conditional statements (example: nested loops)
      * It goes through every code component of the given body (start: method body) and changes complexity score
-     * if necessary and also calls itself recursively if that node has its own body
-     * @param codeComponentBody - Body of the node we are evaluating in this call
+     * if necessary and also calls itself recursively if that code component has its own body
+     * @param codeComponentBody - Body of the code component we are evaluating in this call
      */
     public void evaluateComplexityRecursive (BlockStmt codeComponentBody) {
         // If the body is empty or doesn't exist, stop this method call
         if (codeComponentBody == null) return;
 
-        // Traverse the body code components
+        // Traverse the code components of the body
         for (Node codeComponent : codeComponentBody.getChildNodes()) {
             boolean isLoop = codeComponent instanceof ForStmt || codeComponent instanceof WhileStmt
                     || codeComponent instanceof DoStmt || codeComponent instanceof ForEachStmt;
 
-            // If this node is a conditional statement or a loop, increment the appropriate complexity score
+            // If this code component is a conditional statement or a loop, increment the appropriate complexity score
             if (isLoop) {
                 this.complexityScore.incrementNumberOfLoops();
             } else if (codeComponent instanceof IfStmt || codeComponent instanceof SwitchStmt) {
                 this.complexityScore.incrementNumberOfConditionalStatements();
             }
 
-            // If this node has a body, call this method recursively on that body
+            // If this code component has a body, call this method recursively on that body
             if (codeComponent instanceof NodeWithOptionalBlockStmt<?>) {
                 evaluateComplexityRecursive(((NodeWithOptionalBlockStmt<?>) codeComponent).getBody().orElse(null));
             } else if (codeComponent instanceof NodeWithBody<?>) {
@@ -73,7 +73,7 @@ public class Method {
         }
     }
 
-    // Evaluates camelCase convention through the regex
+    // Evaluates camelCase convention through the regex pattern check
     public boolean evaluateNamingConvention () {
         String camelCaseRegex = "^[a-z]+(?:[A-Z][a-z0-9]*|[0-9]*)*";
 
