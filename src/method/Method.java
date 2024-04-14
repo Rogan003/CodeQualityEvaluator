@@ -67,7 +67,8 @@ public class Method {
             // If this code component has a body, call this method recursively on that body
             if (codeComponent instanceof NodeWithOptionalBlockStmt<?>) {
                 evaluateComplexityRecursive(((NodeWithOptionalBlockStmt<?>) codeComponent).getBody().orElse(null));
-            } else if (codeComponent instanceof NodeWithBody<?>) {
+            } else if (codeComponent instanceof NodeWithBody<?>
+                    && ((NodeWithBody<?>) codeComponent).getBody() instanceof BlockStmt) {
                 evaluateComplexityRecursive(((NodeWithBody<?>) codeComponent).getBody().asBlockStmt());
             }
         }
