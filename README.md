@@ -6,8 +6,6 @@
 
 
 ## Description
-JetBrains internship project for *Implement code metrics engine for Qodana*.
-
 This console application aims to check the complexity of methods in your java code and how many of those methods aren't named following the camelCase convention.
 Your code is provided through a directory, whose path are you providing to the application.
 The complexity of the method here is simply the amount of loops and conditional statements (if/switch statements) in the method.
