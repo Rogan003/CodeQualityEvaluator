@@ -1,0 +1,29 @@
+
+˜
+java:S3655^"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(®‘´şıÿÿÿÿ8£»‹¿ö1J$8196bc2d-d3f1-41fe-802f-7e8cd3fce1b5
+˜
+java:S3655T"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ûÒñúÿÿÿÿ8£»‹¿ö1J$35a3573c-060f-4006-addd-9ad77d6f106a
+•
+java:S37763"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(úÍà8¦»‹¿ö1J$b5d7e6d8-e789-4e33-8ae8-03f4eabcf106
+‰
+java:S6201I"FReplace this instanceof check and cast with 'instanceof IfStmt ifstmt'(ÇÛ†ê8§»‹¿ö1J$232a92ab-66e0-4229-9eb6-65ddeaad422d
+‰
+java:S6201I"FReplace this instanceof check and cast with 'instanceof IfStmt ifstmt'(ÇÛ†ê8¨»‹¿ö1J$9eab563e-5939-4e18-865c-e1bfdcaa5594
+‰
+java:S6201I"FReplace this instanceof check and cast with 'instanceof IfStmt ifstmt'(ÇÛ†ê8¨»‹¿ö1J$633be93d-00b7-4ff7-8e60-83be4cadb8c1
+‰
+java:S6201I"FReplace this instanceof check and cast with 'instanceof IfStmt ifstmt'(ÇÛ†ê8¨»‹¿ö1J$7b85d047-6719-437c-929b-88a9b61688a7
+‰
+java:S6201I"FReplace this instanceof check and cast with 'instanceof IfStmt ifstmt'(ÇÛ†ê8¨»‹¿ö1J$683df764-f190-4ad3-989f-1d7103555293
+‰
+java:S6201I"FReplace this instanceof check and cast with 'instanceof IfStmt ifstmt'(ÇÛ†ê8’‚Ü¿ö1J$bf6cab8f-d364-4567-b340-9f925bed963a
+‰
+java:S6201I"FReplace this instanceof check and cast with 'instanceof IfStmt ifstmt'(ÇÛ†ê8º¨à¿ö1J$20529cc3-9c33-430c-b443-cca85cc4b796
+‰
+java:S6201I"FReplace this instanceof check and cast with 'instanceof IfStmt ifstmt'(ÇÛ†ê8‡òà¿ö1J$be2c7a82-2b98-4236-a4a6-9d6add037267
+„
+java:S5842f"<Rework this part of the regex to not match the empty string.(çÃ¿Òúÿÿÿÿ8©»‹¿ö1J$35eed8c2-2346-4314-bac9-eea37d8d526e
+”
+java:S5998f"LRefactor this repetition that can lead to a stack overflow for large inputs.(çÃ¿Òúÿÿÿÿ8©»‹¿ö1J$7eed0456-e276-44ca-a3a3-7f7a3c8bd28d
+„
+java:S6353f"<Use concise character class syntax '\\d' instead of '[0-9]'.(çÃ¿Òúÿÿÿÿ8©»‹¿ö1J$e895d835-6eb7-4e95-9599-f41eb325f6ea

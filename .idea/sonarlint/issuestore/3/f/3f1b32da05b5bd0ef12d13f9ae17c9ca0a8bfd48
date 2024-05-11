@@ -1,0 +1,25 @@
+
+•
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Íªô¢J$b191881d-d522-443c-b654-efca60d7fe33
+•
+java:S22936"YReplace the type specification in this constructor call with the diamond operator ("<>").(½İ¾óJ$3531ac95-5e93-4317-b35c-f4d4f6963f18
+•
+java:S2293e"YReplace the type specification in this constructor call with the diamond operator ("<>").(½İ¾óJ$49ca6cbe-8664-44c9-a881-022b9e40f3cc
+—
+java:S1104"[Make bonusPoTretmanu a static final constant or non-public and provide accessors if needed.(üáöºJ$46004da8-ed41-47e5-bb3c-5ec0e092cbd3
+
+java:S1104"]Make brojTretmanaBonus a static final constant or non-public and provide accessors if needed.(Ÿ³ø…ùÿÿÿÿJ$3f6612c5-0294-45c7-a777-e20a0f97587f
+˜
+java:S1104"WMake zaradaBonus a static final constant or non-public and provide accessors if needed.(ÆåúÿÿÿÿJ$df9c0027-1830-4128-a30c-3d035173159f
+q
+java:S1444"5Make this "public static bonusPoTretmanu" field final(üáöºJ$cbbe0787-3dae-4a92-a58f-9cefc54ba58f
+x
+java:S1444"7Make this "public static brojTretmanaBonus" field final(Ÿ³ø…ùÿÿÿÿJ$61d59666-34d6-4007-8958-89c3ec9acb6e
+r
+java:S1444"1Make this "public static zaradaBonus" field final(ÆåúÿÿÿÿJ$5941134f-9756-4f64-bf39-3f06963bd89b
+
+java:S2184F"@Cast one of the operands of this addition operation to a "long".(•ÚãÃûÿÿÿÿJ$fc0aa3ff-604c-47d5-a49d-37949d2fa4db
+
+java:S2184L"CCast one of the operands of this subtraction operation to a "long".(‰Èâ»J$64300486-1e42-4c5d-8dec-7724db926c71
+G	java:S106u"+Replace this use of System.out by a logger.(Ø´Ó¨8ŠŸò¤ö1
+}	java:S125›"<This block of commented-out lines of code should be removed.(’éŒÎıÿÿÿÿJ$543d8ba0-63cd-4b62-a6cd-b0296c49e276

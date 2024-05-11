@@ -48,7 +48,7 @@ public class Method {
      * if necessary and also calls itself recursively if that code component has its own body
      * @param codeComponentBody - Body of the code component we are evaluating in this call
      */
-    public void evaluateComplexityRecursive (BlockStmt codeComponentBody) {
+    public void evaluateComplexityRecursive (Statement codeComponentBody) {
         // If the body is empty or doesn't exist, stop this method call
         if (codeComponentBody == null) return;
 
@@ -69,7 +69,30 @@ public class Method {
                 evaluateComplexityRecursive(((NodeWithOptionalBlockStmt<?>) codeComponent).getBody().orElse(null));
             } else if (codeComponent instanceof NodeWithBody<?>
                     && ((NodeWithBody<?>) codeComponent).getBody() instanceof BlockStmt) {
-                evaluateComplexityRecursive(((NodeWithBody<?>) codeComponent).getBody().asBlockStmt());
+                evaluateComplexityRecursive(((NodeWithBody<?>) codeComponent).getBody());
+            } else if (codeComponent instanceof IfStmt) {
+                Statement thenStmt = ((IfStmt) codeComponent).getThenStmt();
+
+                if(thenStmt instanceof IfStmt) {
+                    evaluateComplexityRecursive(((IfStmt) codeComponent).asIfStmt());
+                } else {
+                    evaluateComplexityRecursive(thenStmt);
+                }
+
+                while(((IfStmt) codeComponent).hasCascadingIfStmt())
+                {
+                    codeComponent = ((IfStmt) codeComponent).getElseStmt().get();
+                    thenStmt = ((IfStmt) codeComponent).getThenStmt();
+                    if(thenStmt instanceof IfStmt) {
+                        evaluateComplexityRecursive(((IfStmt) codeComponent).asIfStmt());
+                    } else {
+                        evaluateComplexityRecursive(thenStmt);
+                    }
+                }
+
+                if(((IfStmt) codeComponent).hasElseBlock()) {
+                    evaluateComplexityRecursive(((IfStmt) codeComponent).getElseStmt().get());
+                }
             }
         }
     }
