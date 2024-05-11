@@ -1,14 +1,14 @@
 
 •
-java:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(ÜÆãÏJ$9b67e521-eafe-4ba4-afa4-de1edb7fb60f
+java:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(ÜÆãÏJ$0ad930f3-4654-403b-86f2-20f141751c5a
 š
-java:S2293""YReplace the type specification in this constructor call with the diamond operator ("<>").(™ÈÜ¼úÿÿÿÿJ$df2564cc-c29d-48a0-ab06-36fdbf01e69e
+java:S2293""YReplace the type specification in this constructor call with the diamond operator ("<>").(™ÈÜ¼úÿÿÿÿJ$cf96f173-6baf-4130-9186-879f10fd3ec3
 ›
-java:S2293™"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯€ØÿÿÿÿÿJ$af93102a-6d27-4fc0-9324-76c2681881a4
+java:S2293™"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯€ØÿÿÿÿÿJ$5adb31e2-2d79-4bc0-8076-b7da6a2f0fec
 ‰
-java:S2095d"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(Ş²à²J$e8df936a-172c-4936-a6c7-3d8d17244c83
+java:S2095d"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(Ş²à²J$28d4a2f9-5a78-43d3-8fe5-6290afe8cfd7
 
-java:S3457m"Q%n should be used in place of \n to produce the platform-specific line separator.(Ü‘½°J$cce3cf48-058d-427a-8fa8-a671be388862
-f	java:S106m"+Replace this use of System.out by a logger.(Ü‘½°J$61c24a62-c02c-4452-aa45-d5713b55dddf
+java:S3457m"Q%n should be used in place of \n to produce the platform-specific line separator.(Ü‘½°J$4fbecd63-423f-4c0d-8941-8694c9a7f0fe
+f	java:S106m"+Replace this use of System.out by a logger.(Ü‘½°J$33bb5536-270d-4819-848f-38f0888b7987
 ‡
-java:S1128"FRemove this unused import 'org.checkerframework.checker.units.qual.A'.(¿‚áñøÿÿÿÿJ$19b70d7a-7a33-408a-ad31-83f3e49beb5c
+java:S1128"FRemove this unused import 'org.checkerframework.checker.units.qual.A'.(¿‚áñøÿÿÿÿJ$f00d7d56-017a-4e8a-944c-d50bd1377b93

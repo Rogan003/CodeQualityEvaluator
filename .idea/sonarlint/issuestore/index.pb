@@ -11,3 +11,5 @@ D
 src/test/Tester.java,4/b/4bfbd90499756d9d5afcdf4f3bb540c33cc25794
 g
 7data/projekat_sv_36_2022/src/manage/ManagerFactory.java,6/e/6e0e6120d893ebeafacdc65de0489f3cab7baef1
+U
+%src/method/MethodComplexityScore.java,8/a/8a9ab1be102bcf1bad52c48ed2087d94f559a2bd
