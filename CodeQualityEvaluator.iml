@@ -10,5 +10,6 @@
     <orderEntry type="library" name="github.javaparser.symbol.solver.core" level="project" />
     <orderEntry type="library" name="github.javaparser.core" level="project" />
     <orderEntry type="library" name="github.javaparser.core.serialization" level="project" />
+    <orderEntry type="library" name="junit.pioneer" level="project" />
   </component>
 </module>

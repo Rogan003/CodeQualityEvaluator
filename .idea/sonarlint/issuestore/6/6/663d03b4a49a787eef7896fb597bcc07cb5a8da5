@@ -1,0 +1,18 @@
+
+	java:S112á"FDefine and throw a dedicated exception instead of using a generic one.(‰ÆáeJ$e673a7e0-fdb7-41b5-a140-85bfe7aa9244
+k
+java:S37409"/Provide the parametrized type for this generic.(“åªÌJ$18fc1067-406e-4a9d-9923-8c9d2359921f
+k
+java:S37409"/Provide the parametrized type for this generic.(“åªÌJ$7ae5dbae-f83f-4a60-a648-71f8ebfda531
+š
+java:S2293:"YReplace the type specification in this constructor call with the diamond operator ("<>").(ë¹ÙÎıÿÿÿÿJ$82737f3f-d784-40db-9ab0-ac2a5b8692f5
+–
+java:S2293Æ"YReplace the type specification in this constructor call with the diamond operator ("<>").(ıö‘J$59913950-da2c-4670-b38e-5d237125464e
+j
+java:S1604¤"(Make this anonymous inner class a lambda(æèãøÿÿÿÿJ$a72a46de-ad98-4ad8-bc22-29f39ebe3c6e
+e
+java:S1604û"(Make this anonymous inner class a lambda(ê•úÄJ$39244792-0820-4acd-a251-586d0543acd1
+“
+java:S3776+"RRefactor this method to reduce its Cognitive Complexity from 43 to the 15 allowed.(ÑÁµÆıÿÿÿÿJ$0926e28a-ed01-4cfd-8b88-6d46ed3316d0
+ˆ
+java:S6541¦"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 77 to 64, Complexity from 21 to 14, Nesting Level from 3 to 2, Number of Variables from 17 to 6.(¼ ÒşüÿÿÿÿJ$cea583ce-7129-4967-955b-2c1fa06e4a45

@@ -5,12 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff2088e0-049e-4dbc-964f-50ed37aa6469" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4bfbd90499756d9d5afcdf4f3bb540c33cc25794" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4bfbd90499756d9d5afcdf4f3bb540c33cc25794" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ace861f311f64d0ebfd2c5fc45d72b9dad778e1e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ace861f311f64d0ebfd2c5fc45d72b9dad778e1e" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/2/d2f3dc67045d2c56d384b291a10cc6d04d6de2ce" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/2/d2f3dc67045d2c56d384b291a10cc6d04d6de2ce" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeQualityEvaluator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeQualityEvaluator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/CenovnikManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/CenovnikManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/KlijentManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/KlijentManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/KozmeticarManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/KozmeticarManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/KozmetickaUslugaManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/KozmetickaUslugaManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/KozmetickiSalonManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/KozmetickiSalonManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/KozmetickiTretmanManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/KozmetickiTretmanManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/MenadzerManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/MenadzerManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/RecepcionerManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/RecepcionerManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/TipKozmetickogTretmanaManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/data/projekat_sv_36_2022/src/test/TipKozmetickogTretmanaManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/codeparser/CodeParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/codeparser/CodeParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/method/Method.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/method/Method.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testexamples/Examples.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +36,7 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -82,6 +96,9 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -89,7 +106,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -100,6 +117,14 @@
     <option name="descriptions">
       <ReportDescription localRun="true" path="/private/var/folders/s3/_64gb5sd0xzf8db1xdt25klh0000gn/T/qodana_output/qodana.sarif.json" reportGuid="bea83a57-e644-4a6d-af95-bd3bb7c567d2" reportId="CodeQualityEvaluator/qodana/2024-05-11" />
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="testexamples" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -146,7 +171,8 @@
       <workItem from="1714945846838" duration="251000" />
       <workItem from="1715379044436" duration="207000" />
       <workItem from="1715379261093" duration="861000" />
-      <workItem from="1715425007648" duration="10471000" />
+      <workItem from="1715425007648" duration="10590000" />
+      <workItem from="1715703116370" duration="2986000" />
     </task>
     <servers />
   </component>
